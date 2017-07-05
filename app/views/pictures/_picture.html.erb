@@ -1,9 +1,4 @@
-<div class="media">
-  <div class="media-left">
-    <%= link_to image_tag(picture.image.url(:thumb), class: 'media-object'), picture_path(picture) %>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">Picture #: <%= picture.id %></h4>
-  </div>
-  </div>
+<div>
+  <%= link_to image_tag(picture.image.url(:thumb), class: 'media-object'), picture_path(picture) %>
+  <h4>Picture #: <%= picture.id %></h4>
 </div>

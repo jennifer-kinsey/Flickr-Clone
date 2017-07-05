@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :pictures do
     resources :tags
   end
-  # root to: "user#index"
+  root to: "users#index"
 end

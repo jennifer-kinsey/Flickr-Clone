@@ -1,0 +1,14 @@
+<%= @user.email %>
+<%= @user.name %>
+
+<% @user.pictures.each do |picture| %>
+  <%= link_to image_tag(picture.image.url(:thumb), class: 'media-object'), picture_path(picture) %>
+<% end %>
+
+<br>
+<hr>
+<br>
+
+<% if @user == @logged_user %>
+  <%= link_to "New Picture", new_picture_path %>
+<% end %>

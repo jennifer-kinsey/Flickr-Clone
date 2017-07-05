@@ -6,10 +6,11 @@ class Picture < ApplicationRecord
                             thumb: ["100x100>", :jpg]},
                   convert_options: {
                     thumb: "-quality 100 -strip",
-                    original: "-quality 100 -strip" },
-                    
+                    original: "-quality 100 -strip" }
+
 
   has_many :tags
+  has_many :associations
   has_many :users, through: :associations
 
   validates_attachment :image,

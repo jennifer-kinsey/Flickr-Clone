@@ -15,9 +15,14 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    @user = User.find(current_user.id)
     if @picture.save
+      this_user_id = current_user.id
+      this_picture_id = @picture.id
+      @association = Association.new(:user_id => this_user_id, :picture_id => this_picture_id)
+      @association.save
       flash[:notice] = "Picture successfully added!"
-      redirect_to  pictures_path
+      redirect_to user_path(@user)
     else
       flash[:alert] = "Picture save failed!"
       render :new

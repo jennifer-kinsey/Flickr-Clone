@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
 gem 'shoulda-matchers', "~> 3.1.1"
+gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
