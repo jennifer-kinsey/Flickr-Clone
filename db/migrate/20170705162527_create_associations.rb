@@ -3,7 +3,7 @@ class CreateAssociations < ActiveRecord::Migration[5.1]
     create_table :associations do |t|
       t.integer :user_id
       t.integer :picture_id
-      t.string :type, null: false, default: "upload"
+      t.string :typification, null: false, default: "upload"
       t.timestamps
     end
 

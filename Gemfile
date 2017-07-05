@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
+gem 'shoulda-matchers', "~> 3.1.1"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,7 +42,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
-  gem 'shoulda-matchers'
+
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false

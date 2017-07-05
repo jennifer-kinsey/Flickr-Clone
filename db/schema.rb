@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170705164101) do
   create_table "associations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "picture_id"
-    t.string "type", default: "upload", null: false
+    t.string "typification", default: "upload", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
