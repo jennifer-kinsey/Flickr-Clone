@@ -1,3 +1,17 @@
 <h1><%= image_tag(@picture.image.url, class: 'media-object') %></h1>
-<%= link_to 'Remove', picture_path(@picture), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %>
+
 <p><%= link_to "Return to pictures", pictures_path %></p>
+
+
+<h4>Tag another User</h4>
+<%= form_for [@picture, @association] do |f| %>
+<%= f.label :user_id %>
+<%= f.select :user_id,
+[
+@users.each do |user|
+["#{user.email}","#{user.email}"]
+end
+]
+%>
+<p><%= f.submit %></p>
+<% end %>

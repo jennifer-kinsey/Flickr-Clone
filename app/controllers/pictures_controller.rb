@@ -6,7 +6,10 @@ class PicturesController < ApplicationController
   end
 
   def show
+    @users = User.all
+    @user = current_user
     @picture = Picture.find(params[:id])
+    @association = Association.new
   end
 
   def new
