@@ -7,6 +7,6 @@ class User < ApplicationRecord
 
   has_many :pictures, through: :associations
 
-  validates :name, :email, :encrypted_password, :avatar_url, :presence => true
+  validates :email, :encrypted_password, :avatar_url, :presence => true
 
 end

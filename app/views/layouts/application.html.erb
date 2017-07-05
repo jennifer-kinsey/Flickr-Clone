@@ -9,8 +9,19 @@
   </head>
 
   <body>
+    <div class="jumbotron">
+      <h1>Flickr Clone</h1>
+      <% if current_user %>
+      <p>
+        User: <%= current_user.email %> | <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
+      </p>
+      <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %> 
+      <% end %>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+
   </body>
 </html>
