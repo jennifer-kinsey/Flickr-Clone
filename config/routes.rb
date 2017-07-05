@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    resources :associations
+    resources :pictures do
+      resources :associations
+    end
   end
 
   resources :pictures do
-    resources :associations
+    resources :tags
   end
-
   # root to: "user#index"
 end
