@@ -1,6 +1,11 @@
 <%= @user.email %>
 <%= @user.name %>
+<% if @user == @logged_user %>
+  <%= link_to "New Picture", new_picture_path %>
+<% end %>
 
+<h1>My Photos:</h1>
+<!-- Users' own photos -->
 <% @user.pictures.each do |picture| %>
   <%= link_to image_tag(picture.image.url(:thumb), class: 'media-object'), picture_path(picture) %>
   <% if @user == @logged_user %>
@@ -13,6 +18,11 @@
 <hr>
 <br>
 
-<% if @user == @logged_user %>
-  <%= link_to "New Picture", new_picture_path %>
-<% end %>
+<!-- ADD:
+Favorites
+Tagged Photos -->
+<h1>My Favorite Photos</h1>
+<p>WIP</p>
+<hr>
+<h1>My Tagged Photos</h1>
+<p>WIP</p>

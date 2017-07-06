@@ -8,23 +8,18 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
   end
 
-  def new
-    @tag = Tag.new
-  end
-
   def create
-    @tag = Tag.new(:name => tag_params.name)
-    @user = User.find(current_user.id)
+    @picture = Picture.find(params[:picture_id])
+    @tag = Tag.new(tag_params)
+    # @tag = @picture.tags.build(tag_params)
+    @tag.picture_id = @picture.id
+
     if @tag.save
-      this_user_id = current_user.id
-      this_tag_id = @tag.id
-      @association = Association.new(:user_id => this_user_id, :tag_id => this_tag_id)
-      @association.save
       flash[:notice] = "Tag successfully added!"
-      redirect_to user_path(@user)
+      redirect_to picture_path(@picture)
     else
       flash[:alert] = "Tag save failed!"
-      render :new
+      redirect_to picture_path(@picture)
     end
   end
 
@@ -52,7 +47,7 @@ class TagsController < ApplicationController
 
 private
   def tag_params
-    params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name, :picture_id)
   end
 
 

@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705164101) do
+ActiveRecord::Schema.define(version: 20170706162207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "absorptions", force: :cascade do |t|
+    t.integer "picture_id"
+    t.integer "tag_id"
+  end
 
   create_table "associations", force: :cascade do |t|
     t.integer "user_id"

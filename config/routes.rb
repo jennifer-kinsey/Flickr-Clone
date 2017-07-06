@@ -3,16 +3,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  resources :users, :except => [:edit] do
-    resources :pictures, :except => [:edit] do
-      resources :associations, :only => [:new, :create]
+  resources :users do
+    resources :pictures do
+      resources :associations
     end
   end
 
-  resources :pictures, :except => [:edit] do
+  resources :pictures do
     resources :tags
-    resources :associations, :except => [:show, :index]
-
+    resources :associations
   end
   root to: "users#index"
 end

@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!, :only => [:add, :delete]
+
 
   def index
     @pictures = Picture.order('created_at')
@@ -6,10 +8,12 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @users = User.all
+    @users = User.all  #for tagging other users
     @user = current_user
     @picture = Picture.find(params[:id])
     @association = Association.new
+    @tag = @picture.tags.new
+
   end
 
   def new
@@ -32,20 +36,20 @@ class PicturesController < ApplicationController
     end
   end
 
-  def edit
-    @picture = Picture.find(params[:id])
-  end
-
-  def update
-    @picture = Picture.find(params[:id])
-    if @picture.update(picture_params)
-      flash[:notice] = "Picture successfully edited!"
-      redirect_to pictures_path
-    else
-      flash[:alert] = "Picture edit failed!"
-      render :edit
-    end
-  end
+  # def edit
+  #   @picture = Picture.find(params[:id])
+  # end
+  #
+  # def update
+  #   @picture = Picture.find(params[:id])
+  #   if @picture.update(picture_params)
+  #     flash[:notice] = "Picture successfully edited!"
+  #     redirect_to pictures_path
+  #   else
+  #     flash[:alert] = "Picture edit failed!"
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @picture = Picture.find(params[:id])

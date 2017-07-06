@@ -1,4 +1,10 @@
 class Tag < ActiveRecord::Base
-  validates :name, :picture_id, :presence => true
-  belongs_to :picture, foreign_key: :picture_id, optional: true
+  has_many :absorptions
+  has_many :pictures, through: :absorptions
+
+  validates :name, :presence => true
+
+
+
+
 end

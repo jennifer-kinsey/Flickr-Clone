@@ -15,3 +15,21 @@ end
 %>
 <p><%= f.submit %></p>
 <% end %>
+
+<hr>
+<h2>Picture Tags</h2>
+
+<% Tag.where(picture_id: @picture.id).each do |tag| %>
+  <%= tag.name %>
+<% end %>
+
+<hr>
+
+
+
+<%= form_for [@picture, @tag] do |f| %>
+<!-- <%= f.hidden_field :picture_id, value: @picture.id %> -->
+<%= f.label :name %>
+<%= f.text_field :name %>
+<p><%= f.submit %></p>
+<% end %>

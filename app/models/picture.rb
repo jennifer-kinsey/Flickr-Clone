@@ -1,4 +1,9 @@
 class Picture < ApplicationRecord
+  has_many :absorptions
+  has_many :tags, through: :absorptions
+  has_many :associations
+  has_many :users, through: :associations
+
   has_attached_file :image,
   # url: "/system/:hash.:extension",
   # hash_secret: "abc123",
@@ -9,9 +14,7 @@ class Picture < ApplicationRecord
                     original: "-quality 100 -strip" }
 
 
-  has_many :tags
-  has_many :associations
-  has_many :users, through: :associations
+
 
   validates_attachment :image,
         presence: true,
@@ -19,5 +22,16 @@ class Picture < ApplicationRecord
           content_type: ["image/jpeg", "image/gif", "image/png"]
         },
        size: { in: 0..3.megabytes }
+
+# def tags
+#   returned_tags = []
+#   Tag.all.each do |tag|
+#     if tag.picture_id === self.id
+#      returned_tags.push(tag)
+#     end
+#   end
+#   returned_tags
+# end
+
 
 end
