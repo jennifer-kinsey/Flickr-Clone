@@ -43,7 +43,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
-
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false

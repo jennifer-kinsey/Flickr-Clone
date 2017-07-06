@@ -1,15 +1,17 @@
 <h1><%= image_tag(@picture.image.url, class: 'media-object') %></h1>
+<h2>Posted by: </h2>
 
 <p><%= link_to "Return to pictures", pictures_path %></p>
 
+<h2>Tagged Users</h2>
 
+<hr>
 <h4>Tag another User</h4>
 <%= form_for [@picture, @association] do |f| %>
 <%= f.label :user_id %>
 <%= f.select :user_id,
-[
-@users.each do |user|
-["#{user.email}","#{user.email}"]
+[@users.each do |user|
+  ["#{user.email}","#{user.email}"]
 end
 ]
 %>
@@ -18,15 +20,17 @@ end
 
 <hr>
 <h2>Picture Tags</h2>
-
-<% Tag.where(picture_id: @picture.id).each do |tag| %>
-  <%= tag.name %>
+<% if Tag.where(picture_id: @picture.id) != 0 %>
+  <% Tag.where(picture_id: @picture.id).each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+<% else %>
+  <p> No tags for this photo</p>
 <% end %>
-
 <hr>
 
 
-
+<h4>Add a tag</h4>
 <%= form_for [@picture, @tag] do |f| %>
 <!-- <%= f.hidden_field :picture_id, value: @picture.id %> -->
 <%= f.label :name %>

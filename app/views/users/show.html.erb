@@ -4,6 +4,10 @@
   <%= link_to "New Picture", new_picture_path %>
 <% end %>
 
+<% if @user.admin == true %>
+<p>Show this text only to admins</p>
+<% end %>
+
 <h1>My Photos:</h1>
 <!-- Users' own photos -->
 <% @user.pictures.each do |picture| %>

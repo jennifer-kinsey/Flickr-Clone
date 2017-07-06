@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170706162207) do
     t.inet "last_sign_in_ip"
     t.string "name"
     t.string "avatar_url", default: "https://www.crossref.org/images/staff/blank-profile-picture.png", null: false
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

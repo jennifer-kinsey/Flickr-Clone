@@ -63,5 +63,4 @@ private
     params.require(:picture).permit(:image)
   end
 
-
 end
